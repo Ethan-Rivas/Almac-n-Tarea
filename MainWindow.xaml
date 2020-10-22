@@ -1,0 +1,56 @@
+﻿<Window x:Class="Almacén.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Almacén"
+        mc:Ignorable="d"
+        Title="Almacén - Ethan Rivas" ResizeMode="NoResize" SizeToContent="WidthAndHeight" MinWidth="600" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFD6D6D6">
+
+        <Menu Background="#FFEAEAEA" Height="25" VerticalAlignment="Top">
+
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}" Height="25"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+
+            <MenuItem Header="Catálogo" FontSize="16" StaysOpenOnClick="True" HorizontalAlignment="Left">
+                <MenuItem Header="Añadir Marca" Click="MenuItem_AddBrand"/>
+                <MenuItem Header="Lista de Marcas" Click="MenuItem_Brands"/>
+                <Separator/>
+                <MenuItem Header="Añadir Modelo" Click="MenuItem_AddModel"/>
+                <MenuItem Header="Lista de Modelos" Click="MenuItem_Models"/>
+                <Separator/>
+                <MenuItem Header="Añadir Producto" Click="MenuItem_AddProduct"/>
+                <MenuItem Header="Lista de Productos" Click="MenuItem_Products"/>
+            </MenuItem>
+
+            <MenuItem Header="Inventario" FontSize="16" StaysOpenOnClick="True" HorizontalAlignment="Left" Margin="80,0,0,0">
+                <MenuItem Header="Entradas" Click="MenuItem_Entries"/>
+                <MenuItem Header="Añadir Entrada" Click="MenuItem_AddEntry"/>
+                <Separator/>
+                <MenuItem Header="Salidas" Click="MenuItem_Exits"/>
+                <MenuItem Header="Añadir Salida" Click="MenuItem_AddExit"/>
+            </MenuItem>
+
+            <MenuItem Header="Usuarios" FontSize="16" StaysOpenOnClick="True" HorizontalAlignment="Left" Margin="166,0,0,0">
+                <MenuItem Header="Alta de Usuario" Click="MenuItem_AddUser"/>
+                <MenuItem Header="Lista de Usuarios" Click="MenuItem_Users"/>
+            </MenuItem>
+
+            <MenuItem Header="Provedores" FontSize="16" StaysOpenOnClick="True" HorizontalAlignment="Left" Margin="242,0,0,0" Width="91">
+                <MenuItem Header="Alta de Provedor" Click="MenuItem_AddProvider"/>
+                <MenuItem Header="Lista de Provedores" Click="MenuItem_Providers"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Margin="0,25,0,24" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Frame x:Name="page_frame" NavigationUIVisibility="Hidden"/>
+        </Grid>
+
+        <TextBlock TextWrapping="Wrap" Text="Ethan Rivas - UNISUR" VerticalAlignment="Bottom" Margin="0,40,0,0" TextAlignment="Center" Height="24" Padding="0" Background="#FFEAEAEA" FontSize="16"/>
+    </Grid>
+
+</Window>
