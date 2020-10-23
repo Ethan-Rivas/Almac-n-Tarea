@@ -8,10 +8,10 @@
       Title="ManageModel">
 
     <Grid Background="White" Height="305">
-        <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Text="Gestionar Marcas"/>
+        <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Text="Gestionar Modelos"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Modelo" VerticalAlignment="Top" Margin="10,55,0,0"/>
-        <ComboBox x:Name="model_filter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="325" Margin="10,76,0,0" IsEditable="True" SelectionChanged="GetModel"/>
+        <ComboBox x:Name="model_filter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="339" Margin="10,76,0,0" IsEditable="True" SelectionChanged="GetModel"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" Margin="10,108,0,0"/>
         <TextBox x:Name="name" Height="23" Margin="10,129,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
@@ -19,7 +19,7 @@
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Descripción" VerticalAlignment="Top" Margin="10,157,0,0"/>
         <TextBox x:Name="description" Height="80" Margin="10,178,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="317"/>
 
-        <Button Content="Actualizar" VerticalAlignment="Bottom" Margin="10,0,185,10" Click="Button_Update"/>
-        <Button Content="Borrar" VerticalAlignment="Bottom" Margin="171,0,10,10" Click="Button_Delete"/>
+        <Button Content="Actualizar" VerticalAlignment="Bottom" Margin="10,0,181,10" Click="Button_Update"/>
+        <Button Content="Borrar" VerticalAlignment="Bottom" Margin="183,0,10,10" Click="Button_Delete"/>
     </Grid>
 </Page>

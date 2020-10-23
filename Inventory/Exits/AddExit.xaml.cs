@@ -153,12 +153,12 @@ namespace Almacén
                 }
 
                 sqlReader.Close();
-                connection.Open();
+                connection.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Exception Handler: {ex}");
-                connection.Open();
+                connection.Close();
             }
 
             stock_ind.Text = stock;
