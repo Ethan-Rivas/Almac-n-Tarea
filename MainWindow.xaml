@@ -9,7 +9,6 @@
     <Grid Background="#FFD6D6D6">
 
         <Menu Background="#FFEAEAEA" Height="25" VerticalAlignment="Top">
-
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Background="{x:Null}" Height="25"/>
@@ -18,12 +17,15 @@
 
             <MenuItem Header="Catálogo" FontSize="16" StaysOpenOnClick="True" HorizontalAlignment="Left">
                 <MenuItem Header="Añadir Marca" Click="MenuItem_AddBrand"/>
+                <MenuItem Header="Gestionar Marcas" Click="MenuItem_ManageBrand"/>
                 <MenuItem Header="Lista de Marcas" Click="MenuItem_Brands"/>
                 <Separator/>
                 <MenuItem Header="Añadir Modelo" Click="MenuItem_AddModel"/>
+                <MenuItem Header="Gestionar Modelos" Click="MenuItem_ManageModel"/>
                 <MenuItem Header="Lista de Modelos" Click="MenuItem_Models"/>
                 <Separator/>
                 <MenuItem Header="Añadir Producto" Click="MenuItem_AddProduct"/>
+                <MenuItem Header="Gestionar Productos" Click="MenuItem_ManageProduct"/>
                 <MenuItem Header="Lista de Productos" Click="MenuItem_Products"/>
             </MenuItem>
 
@@ -37,11 +39,13 @@
 
             <MenuItem Header="Usuarios" FontSize="16" StaysOpenOnClick="True" HorizontalAlignment="Left" Margin="166,0,0,0">
                 <MenuItem Header="Alta de Usuario" Click="MenuItem_AddUser"/>
+                <MenuItem Header="Gestión de Usuarios" Click="MenuItem_ManageUser"/>
                 <MenuItem Header="Lista de Usuarios" Click="MenuItem_Users"/>
             </MenuItem>
 
             <MenuItem Header="Provedores" FontSize="16" StaysOpenOnClick="True" HorizontalAlignment="Left" Margin="242,0,0,0" Width="91">
                 <MenuItem Header="Alta de Provedor" Click="MenuItem_AddProvider"/>
+                <MenuItem Header="Gestión de Proovedores" Click="MenuItem_ManageProvider"/>
                 <MenuItem Header="Lista de Provedores" Click="MenuItem_Providers"/>
             </MenuItem>
         </Menu>
@@ -50,7 +54,7 @@
             <Frame x:Name="page_frame" NavigationUIVisibility="Hidden"/>
         </Grid>
 
-        <TextBlock TextWrapping="Wrap" Text="Ethan Rivas - UNISUR" VerticalAlignment="Bottom" Margin="0,40,0,0" TextAlignment="Center" Height="24" Padding="0" Background="#FFEAEAEA" FontSize="16"/>
+        <TextBlock TextWrapping="Wrap" x:Name="currentUser" Text="Ethan Rivas - UNISUR" VerticalAlignment="Bottom" Margin="0,40,0,0" TextAlignment="Center" Height="24" Padding="0" Background="#FFEAEAEA" FontSize="16"/>
     </Grid>
 
 </Window>

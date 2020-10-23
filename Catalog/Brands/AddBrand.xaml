@@ -9,12 +9,12 @@
 
     <Grid Background="White">
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" Margin="10,50,0,0"/>
-        <TextBox Height="23" Margin="10,71,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
+        <TextBox x:Name="name" Height="23" Margin="10,71,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Descripción" VerticalAlignment="Top" Margin="10,108,0,0"/>
-        <TextBox Height="80" Margin="10,129,10,45" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="317"/>
+        <TextBox x:Name="description" Height="80" Margin="10,129,10,45" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="317"/>
 
-        <Button Content="Guardar" VerticalAlignment="Bottom" Margin="10"/>
+        <Button Content="Guardar" VerticalAlignment="Bottom" Margin="10" Click="Button_Click"/>
         <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Text="Añadir Marca"/>
     </Grid>
 </Page>

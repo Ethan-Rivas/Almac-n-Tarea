@@ -7,24 +7,27 @@
       mc:Ignorable="d"
       Title="AddUser">
 
-    <Grid Background="White" MinHeight="260">
+    <Grid Background="White" MinHeight="260" Height="330">
         <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"><Run Text="Añadir "/><Run Text="Usuario"/></TextBlock>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="CÓDIGO" VerticalAlignment="Top" Margin="10,50,0,0"/>
-        <TextBox Height="23" Margin="10,71,179,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
+        <TextBox x:Name="code" Height="23" Margin="10,71,179,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="172,50,0,0"><Run Text="NOMBRE"/><Run Text="/"/><Run Text="RAZÓN SOCIAL"/></TextBlock>
-        <TextBox Height="23" Margin="172,71,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
+        <TextBox x:Name="name" Height="23" Margin="172,71,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="DIRECCIÓN" VerticalAlignment="Top" Margin="10,108,0,0"/>
-        <TextBox Height="30" Margin="10,129,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="317"/>
+        <TextBox x:Name="address" Height="30" Margin="10,129,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="317"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="E-MAIL" VerticalAlignment="Top" Margin="10,174,0,0"/>
-        <TextBox Height="23" Margin="10,195,179,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
+        <TextBox x:Name="email" Height="23" Margin="10,195,179,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="TELÉFONO" VerticalAlignment="Top" Margin="172,174,0,0"/>
-        <TextBox Height="23" Margin="174,195,8,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
+        <TextBox x:Name="phone" PreviewTextInput="NumberValidationTextBox" Height="23" Margin="174,195,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155" MaxLength="10"/>
 
-        <Button Content="Guardar" VerticalAlignment="Bottom" Margin="10"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="CONTRASEÑA" VerticalAlignment="Top" Margin="10,231,0,0"/>
+        <PasswordBox x:Name="password" Height="23" Margin="10,252,10,0" VerticalAlignment="Top" MinWidth="155"/>
+
+        <Button Content="Guardar" VerticalAlignment="Bottom" Margin="10" Click="Button_Click"/>
     </Grid>
 </Page>

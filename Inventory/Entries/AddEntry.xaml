@@ -8,26 +8,23 @@
       Title="AddEntry">
 
     <Grid Background="White" MinHeight="190">
+        <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"><Run Text="A"/><Run Text="ñadir "/><Run Text="Entrada"/></TextBlock>
 
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Proveedor" VerticalAlignment="Top" Margin="10,54,0,0"/>
+        <ComboBox x:Name="provider" Margin="10,73,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="157" Height="24" IsEditable="True"></ComboBox>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Producto" VerticalAlignment="Top" Margin="10,102,0,0"/>
 
-        <ComboBox Margin="10,123,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="157" Height="24">
-            <ComboBoxItem Content="ComboBox Item #1"/>
-            <ComboBoxItem IsSelected="True" Content="ComboBox Item #2"/>
-            <ComboBoxItem Content="ComboBox Item #3"/>
-        </ComboBox>
+        <ComboBox x:Name="product" Margin="10,123,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Height="24" IsEditable="True"></ComboBox>
 
-        <Button Content="Guardar" VerticalAlignment="Bottom" Margin="10"/>
-        <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"><Run Text="A"/><Run Text="ñadir "/><Run Text="Entrada"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Cantidad" VerticalAlignment="Top" Margin="172,102,0,0"/>
-        <TextBox Height="24" Margin="172,123,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Proveedor" VerticalAlignment="Top" Margin="10,54,0,0"/>
-        <ComboBox Margin="10,73,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="157" Height="24">
-            <ComboBoxItem Content="ComboBox Item #1"/>
-            <ComboBoxItem IsSelected="True" Content="ComboBox Item #2"/>
-            <ComboBoxItem Content="ComboBox Item #3"/>
-        </ComboBox>
-        <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Margin="172,73,0,0" Width="155"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Cantidad" VerticalAlignment="Top" Margin="110,102,0,0"/>
+        <TextBox x:Name="quantity" Height="24" Margin="110,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
+
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Costo" VerticalAlignment="Top" Margin="215,102,0,0"/>
+        <TextBox x:Name="cost_price" Height="24" Margin="215,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="94"/>
+
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Fecha de Entrada" VerticalAlignment="Top" Margin="172,54,0,0"/>
+        <DatePicker x:Name="date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="172,73,0,0" Width="138" IsEnabled="False"/>
+
+        <Button Content="Guardar" VerticalAlignment="Bottom" Margin="10,0,13,10" Click="Button_Click"/>
     </Grid>
 </Page>

@@ -1,0 +1,24 @@
+﻿<Page x:Class="Almacén.ManageBrand"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Almacén"
+      mc:Ignorable="d"
+      Title="ManageBrand">
+
+    <Grid Background="White" Height="305">
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" Margin="10,108,0,0"/>
+        <TextBox x:Name="name" Height="23" Margin="10,129,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
+
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Descripción" VerticalAlignment="Top" Margin="10,157,0,0"/>
+        <TextBox x:Name="description" Height="80" Margin="10,178,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="317"/>
+
+        <Button Content="Actualizar" VerticalAlignment="Bottom" Margin="10,0,185,10" Click="Button_Update"/>
+        <Button Content="Borrar" VerticalAlignment="Bottom" Margin="174,0,10,10" Click="Button_Delete" Width="164"/>
+
+        <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Text="Gestionar Marcas"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Marca" VerticalAlignment="Top" Margin="10,55,0,0"/>
+        <ComboBox x:Name="brand_filter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="328" Margin="10,76,0,0" IsEditable="True" SelectionChanged="GetBrand"/>
+    </Grid>
+</Page>

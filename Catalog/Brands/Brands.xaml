@@ -9,6 +9,6 @@
 
     <Grid Background="White" MinHeight="70">
         <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"><Run Text="Lista de "/><Run Text="Marcas"/></TextBlock>
-        <DataGrid VerticalAlignment="Top" Margin="15,45,15,15" MinWidth="400" MinHeight="199.7"/>
+        <DataGrid x:Name="BrandsTable" VerticalAlignment="Top" Margin="15,45,15,15" MinWidth="400" MinHeight="199.7" IsReadOnly="True"/>
     </Grid>
 </Page>

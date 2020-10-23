@@ -8,26 +8,21 @@
       Title="AddExit">
 
     <Grid Background="White" MinHeight="190">
+        <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Text="Añadir Salida"></TextBlock>
+
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Usuario" VerticalAlignment="Top" Margin="10,54,0,0"/>
+        <ComboBox x:Name="user" Margin="10,73,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="157" Height="24" IsEditable="True" IsEnabled="False"></ComboBox>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Producto" VerticalAlignment="Top" Margin="10,102,0,0"/>
+        <ComboBox x:Name="product" Margin="10,123,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="157" Height="24" IsEditable="True" SelectionChanged="GetStock"></ComboBox>
 
-        <ComboBox Margin="10,123,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="157" Height="24">
-            <ComboBoxItem Content="ComboBox Item #1"/>
-            <ComboBoxItem IsSelected="True" Content="ComboBox Item #2"/>
-            <ComboBoxItem Content="ComboBox Item #3"/>
-        </ComboBox>
-
-        <Button Content="Guardar" VerticalAlignment="Bottom" Margin="10"/>
-        <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"><Run Text="A"/><Run Text="ñadir "/><Run Text="Salida"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Cantidad" VerticalAlignment="Top" Margin="172,102,0,0"/>
-        <TextBox Height="24" Margin="172,123,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Cliente" VerticalAlignment="Top" Margin="10,54,0,0"/>
-        <ComboBox Margin="10,73,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="157" Height="24">
-            <ComboBoxItem Content="ComboBox Item #1"/>
-            <ComboBoxItem IsSelected="True" Content="ComboBox Item #2"/>
-            <ComboBoxItem Content="ComboBox Item #3"/>
-        </ComboBox>
-        <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Margin="172,73,0,0" Width="155"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="172,54,0,0"><Run Text="Fecha de "/><Run Text="Salida"/></TextBlock>
+        <TextBox x:Name="quantity" Height="24" Margin="172,123,45,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="172,54,0,0" Text="Fecha de Salida"></TextBlock>
+        <DatePicker x:Name="date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="172,73,0,0" Width="145" IsEnabled="False"/>
+
+        <Button Content="Guardar" VerticalAlignment="Bottom" Margin="10" Click="Button_Click"/>
+        <TextBlock x:Name="stock_ind" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="287,123,0,0" Height="24" Width="30" Text="0" TextAlignment="Center" Padding="0,1,0,0" FontSize="16"/>
     </Grid>
 </Page>

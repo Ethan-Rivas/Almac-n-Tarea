@@ -9,38 +9,26 @@
 
     <Grid Background="White">
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="SKU" VerticalAlignment="Top" Margin="10,50,0,0"/>
-        <TextBox Height="23" Margin="10,71,170,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
+        <TextBox x:Name="sku" Height="23" Margin="10,71,195,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" Margin="172,50,0,0"/>
-        <TextBox Height="23" Margin="172,71,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
+        <TextBox x:Name="name" Height="23" Margin="172,71,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
 
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Descripción" VerticalAlignment="Top" Margin="10,108,0,0"/>
-        <TextBox Height="80" Margin="10,129,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="317"/>
+        <TextBox x:Name="description" Height="80" Margin="10,129,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="317"/>
 
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Precio Compra" VerticalAlignment="Top" Margin="10,225,0,0"/>
-        <TextBox Height="23" Margin="10,246,170,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
+        <Grid Margin="10,225,10,45">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Precio Venta" VerticalAlignment="Top"/>
+            <TextBox x:Name="web_price" Height="22" Margin="0,22,242,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="95" Width="100"/>
 
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Precio Venta" VerticalAlignment="Top" Margin="172,225,0,0"/>
-        <TextBox Height="23" Margin="172,246,10,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="155"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Marca" VerticalAlignment="Top" Margin="105,0,0,0"/>
+            <ComboBox x:Name="brand_filter" Margin="105,22,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" IsEditable="True"></ComboBox>
 
-        <Grid Margin="10,274,10,45">
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Marca" VerticalAlignment="Top" Margin="0,10,0,0"/>
-
-            <ComboBox Margin="0,31,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="157">
-                <ComboBoxItem Content="ComboBox Item #1"/>
-                <ComboBoxItem IsSelected="True" Content="ComboBox Item #2"/>
-                <ComboBoxItem Content="ComboBox Item #3"/>
-            </ComboBox>
-
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Modelo" VerticalAlignment="Top" Margin="162,10,0,0"/>
-            <ComboBox Margin="162,31,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155">
-                <ComboBoxItem Content="ComboBox Item #1"/>
-                <ComboBoxItem IsSelected="True" Content="ComboBox Item #2"/>
-                <ComboBoxItem Content="ComboBox Item #3"/>
-            </ComboBox>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Modelo" VerticalAlignment="Top" Margin="225,0,0,0"/>
+            <ComboBox x:Name="model_filter" Margin="225,22,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" IsEditable="True"></ComboBox>
         </Grid>
 
-        <Button Content="Guardar" VerticalAlignment="Bottom" Margin="10"/>
+        <Button Content="Guardar" VerticalAlignment="Bottom" Margin="10" Click="Button_Click"/>
         <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"><Run Text="A"/><Run Text="ñadir Producto"/></TextBlock>
     </Grid>
 </Page>
