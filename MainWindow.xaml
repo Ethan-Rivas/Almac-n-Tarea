@@ -48,6 +48,8 @@
                 <MenuItem Header="Gestión de Proovedores" Click="MenuItem_ManageProvider"/>
                 <MenuItem Header="Lista de Provedores" Click="MenuItem_Providers"/>
             </MenuItem>
+
+            <MenuItem Header="Desconectar" FontSize="16" StaysOpenOnClick="True" Margin="492,0,0,0" Width="102" HorizontalAlignment="Right" Click="Logout"/>
         </Menu>
 
         <Grid Margin="0,25,0,24" HorizontalAlignment="Center" VerticalAlignment="Center">

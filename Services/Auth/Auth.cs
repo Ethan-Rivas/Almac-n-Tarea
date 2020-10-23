@@ -20,7 +20,7 @@ namespace Almacén.Services.Auth
 
             try
             {
-                string sql = $"SELECT * FROM users WHERE email = '{email}' AND password = '{pwd}'";
+                string sql = $"SELECT * FROM users WHERE email = '{email}' AND password = '{pwd}' AND deleted_at IS NULL;";
 
                 Console.WriteLine(sql);
 

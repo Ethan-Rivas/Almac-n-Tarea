@@ -33,8 +33,8 @@ namespace Almacén
             string credentials = "server=127.0.0.1;user=rivas;password=test123;database=tarea;port=3306;";
             MySqlConnection connection = new MySqlConnection(credentials);
 
-            string providers = "SELECT * FROM providers";
-            string products = "SELECT * FROM products";
+            string providers = "SELECT * FROM providers WHERE deleted_at IS NULL;";
+            string products = "SELECT * FROM products WHERE deleted_at IS NULL;";
 
             try
             {

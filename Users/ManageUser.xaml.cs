@@ -172,12 +172,16 @@ namespace Almacén
 
                 if (user_filter.SelectedValue == null)
                     MessageBox.Show("No seleccionó un usuario a eliminar.", "Validación");
-                else if (code.Text == null || name.Text == null || address.Text == null || email.Text == null || phone.Text == null)
-                    MessageBox.Show("Todos los campos son requeridos.", "Validación");
                 else
                 {
                     // Consulta SQL para elimiar un usuario
-                    string sql = $"DELETE FROM users WHERE name = '{(user_filter.SelectedItem as dynamic).Text}';";
+                    //string sql = $"DELETE FROM users WHERE id = '{(user_filter.SelectedItem as dynamic).Value}';";
+
+                    // Consulta SQL para soft delete
+                    DateTime today = DateTime.Now;
+                    string FormattedDate = today.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+                    string sql = $"UPDATE users SET deleted_at = '{FormattedDate}' WHERE id = '{(user_filter.SelectedItem as dynamic).Value}';";
 
                     Console.WriteLine(sql);
 

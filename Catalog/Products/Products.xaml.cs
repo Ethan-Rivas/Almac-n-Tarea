@@ -44,13 +44,14 @@ namespace Almacén
                          "brands.name AS Marca, " +
                          "models.name AS Modelo FROM products " +
                          "JOIN brands ON products.brand_id = brands.id " +
-                         "JOIN models ON products.model_id = models.id ";
+                         "JOIN models ON products.model_id = models.id " +
+                         "WHERE products.deleted_at IS NULL";
 
             string brands = "SELECT * FROM brands";
             string models = "SELECT * FROM models";
 
-            string min_web_price = "SELECT MIN(web_price) AS min_price FROM products";
-            string max_web_price = "SELECT MAX(web_price) AS max_price FROM products";
+            string min_web_price = "SELECT MIN(web_price) AS min_price FROM products WHERE products.deleted_at IS NULL";
+            string max_web_price = "SELECT MAX(web_price) AS max_price FROM products WHERE products.deleted_at IS NULL";
 
             try
             {
@@ -136,29 +137,6 @@ namespace Almacén
                 min_price.Text = min.ToString();
                 max_price.Text = max.ToString();
 
-                // Consulta SQL con relaciones
-                string search = "SELECT " +
-                                "products.id AS ID, " +
-                                "products.sku AS SKU, " +
-                                "products.name AS Nombre, " +
-                                "products.description AS Descripción, " +
-                                "products.web_price AS 'Precio Venta', " +
-                                "products.stock AS Stock, " +
-                                "brands.name AS Marca, " +
-                                "models.name AS Modelo FROM products " +
-                                "JOIN brands ON products.brand_id = brands.id " +
-                                "JOIN models ON products.model_id = models.id WHERE ";
-
-                // Separado del string por fines didácticos.
-                search += $"products.sku LIKE '%{sku_filter.Text}%' AND ";
-                search += $"products.name LIKE '%{name_filter.Text}%' AND ";
-                search += $"products.web_price >= {min_price.Text} AND ";
-                search += $"products.web_price <= {max_price.Text} AND ";
-                search += $"brands.name LIKE '%{brand_filter.Text}%' AND ";
-                search += $"models.name LIKE '%{model_filter.Text}%'";
-
-                Console.WriteLine(search);
-
                 // Se crea la conexión con la base de datos/servidor
                 string credentials = "server=127.0.0.1;user=rivas;password=test123;database=tarea;port=3306;";
                 MySqlConnection connection = new MySqlConnection(credentials);
@@ -168,6 +146,48 @@ namespace Almacén
                     // Abre la conexión
                     connection.Open();
 
+                    // Consulta SQL con relaciones
+                    string search = "SELECT " +
+                                    "products.id AS ID, " +
+                                    "products.sku AS SKU, " +
+                                    "products.name AS Nombre, " +
+                                    "products.description AS Descripción, " +
+                                    "products.web_price AS 'Precio Venta', " +
+                                    "products.stock AS Stock, " +
+                                    "brands.name AS Marca, " +
+                                    "models.name AS Modelo FROM products " +
+                                    "JOIN brands ON products.brand_id = brands.id " +
+                                    "JOIN models ON products.model_id = models.id WHERE ";
+
+                    string min_web_price, max_web_price;
+
+                    if (deleted_check.IsChecked == false)
+                    {
+                        search += $"products.deleted_at IS NULL AND ";
+
+                        min_web_price = "SELECT MIN(web_price) AS min_price FROM products WHERE products.deleted_at IS NULL";
+                        max_web_price = "SELECT MAX(web_price) AS max_price FROM products WHERE products.deleted_at IS NULL";
+                    }
+                    else
+                    {
+                        min_web_price = "SELECT MIN(web_price) AS min_price FROM products";
+                        max_web_price = "SELECT MAX(web_price) AS max_price FROM products";
+                    }
+
+                    // Insertar Rango de Precios
+                    InsertData(min_web_price, connection, "min_price", min_price);
+                    InsertData(max_web_price, connection, "max_price", max_price);
+
+                    // Separado del string por fines didácticos.
+                    search += $"products.sku LIKE '%{sku_filter.Text}%' AND ";
+                    search += $"products.name LIKE '%{name_filter.Text}%' AND ";
+                    search += $"products.web_price >= {min_price.Text} AND ";
+                    search += $"products.web_price <= {max_price.Text} AND ";
+                    search += $"brands.name LIKE '%{brand_filter.Text}%' AND ";
+                    search += $"models.name LIKE '%{model_filter.Text}%'";
+
+                    Console.WriteLine(search);
+
                     // Inserta como un DataSet lo devuelto en la consulta SQL
                     MySqlDataAdapter da = new MySqlDataAdapter(search, connection);
                     DataSet ds = new DataSet();
@@ -176,6 +196,9 @@ namespace Almacén
 
                     // Debug para la Tabla ingresada
                     //DebugTable(dt);
+
+                    // Limpiar la DataGrid antes de Ingresar
+                    ClearTableData();
 
                     // Llenar la DataGrid con la Tabla ingresada
                     InsertTableData(dt);

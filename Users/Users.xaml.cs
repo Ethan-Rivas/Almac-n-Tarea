@@ -44,7 +44,7 @@ namespace Almacén
                              "address AS Dirección, " +
                              "email AS Correo, " +
                              "phone AS Teléfono " +
-                             "FROM users " +
+                             "FROM users WHERE deleted_at IS NULL " +
                              "ORDER BY id DESC";
 
                 // Inserta como un DataSet lo devuelto en la consulta SQL
@@ -106,8 +106,14 @@ namespace Almacén
                              "phone AS Teléfono " +
                              "FROM users WHERE ";
 
+            if (deleted_check.IsChecked == false)
+            {
+                search += $"deleted_at IS NULL AND ";
+            }
+
             // Separado del string por fines didácticos.
-            search += $"email LIKE '%{email.Text}%'";
+            search += $"email LIKE '%{email.Text}%' ";
+            search += "ORDER BY id DESC";
 
             Console.WriteLine(search);
 

@@ -5,19 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:Almacén"
       mc:Ignorable="d"
-      Title="Products">
+      Title="Products" Height="296.333">
 
     <Grid Background="White" MinHeight="70">
         <TextBlock TextWrapping="Wrap" Margin="101,10,91,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Text="Lista de Productos"/>
-        <DataGrid x:Name="ProductsTable" VerticalAlignment="Top" Margin="15,160,15,15" MinWidth="400" MinHeight="100" IsReadOnly="True"/>
-        <Grid VerticalAlignment="Top" Margin="15,51,12,0" HorizontalAlignment="Center" Width="403" Height="90">
+        <DataGrid x:Name="ProductsTable" VerticalAlignment="Top" Margin="15,186,15,0" MinWidth="400" MinHeight="100" IsReadOnly="True"/>
+        <Grid VerticalAlignment="Top" Margin="15,51,15,0" Width="403" Height="104">
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="SKU" VerticalAlignment="Top" Margin="0,4,0,0"/>
             <TextBox x:Name="sku_filter" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Margin="49,4,0,0" HorizontalAlignment="Left"/>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" Margin="0,32,0,0"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" Margin="0,35,0,0"/>
             <TextBox x:Name="name_filter" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Margin="49,32,0,0"/>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Precio Max." VerticalAlignment="Top" Margin="265,33,0,0"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Precio Max." VerticalAlignment="Top" Margin="265,35,0,0"/>
             <TextBox x:Name="min_price" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Margin="331,4,0,0" Text="0.00"/>
 
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Precio Min." VerticalAlignment="Top" Margin="265,7,0,0"/>
@@ -26,10 +26,15 @@
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Marca" VerticalAlignment="Top" Margin="134,4,0,0"/>
             <ComboBox x:Name="brand_filter" Margin="180,4,0,0" VerticalAlignment="Top" Width="80" Height="20" HorizontalAlignment="Left" IsEditable="True"/>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Modelo" VerticalAlignment="Top" Margin="134,33,0,0"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Modelo" VerticalAlignment="Top" Margin="134,35,0,0"/>
             <ComboBox x:Name="model_filter" HorizontalAlignment="Left" Margin="180,32,0,0" VerticalAlignment="Top" Width="80" Height="20" IsEditable="True"/>
 
-            <Button x:Name="Search" Content="Buscar" VerticalAlignment="Bottom" Click="Button_Search"/>
+            <Button x:Name="Search" Content="Buscar" VerticalAlignment="Bottom" Click="Button_Search" Margin="0,0,0,-5"/>
+
+            <Grid HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="138" Margin="265,57,0,0">
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Borrados" VerticalAlignment="Top" Margin="0,6,0,-107"/>
+                <CheckBox x:Name="deleted_check" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="65,6,0,0" Padding="0" BorderBrush="#FFABADB3" Height="15" RenderTransformOrigin="0.5,0.5" Width="16" />
+            </Grid>
         </Grid>
     </Grid>
 </Page>

@@ -32,8 +32,8 @@ namespace Almacén
             string credentials = "server=127.0.0.1;user=rivas;password=test123;database=tarea;port=3306;";
             MySqlConnection connection = new MySqlConnection(credentials);
 
-            string brands = "SELECT * FROM brands";
-            string models = "SELECT * FROM models";
+            string brands = "SELECT * FROM brands WHERE deleted_at IS NULL";
+            string models = "SELECT * FROM models WHERE deleted_at IS NULL";
 
             try
             {

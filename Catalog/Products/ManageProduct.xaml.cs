@@ -31,9 +31,9 @@ namespace Almacén
             string credentials = "server=127.0.0.1;user=rivas;password=test123;database=tarea;port=3306;";
             MySqlConnection connection = new MySqlConnection(credentials);
 
-            string products = "SELECT * FROM products";
-            string brands = "SELECT * FROM brands";
-            string models = "SELECT * FROM models";
+            string products = "SELECT * FROM products WHERE deleted_at IS NULL";
+            string brands = "SELECT * FROM brands WHERE deleted_at IS NULL";
+            string models = "SELECT * FROM models WHERE deleted_at IS NULL";
 
             try
             {
@@ -92,7 +92,8 @@ namespace Almacén
                              $"FROM products " +
                              "JOIN brands ON products.brand_id = brands.id " +
                              "JOIN models ON products.model_id = models.id " +
-                             $"WHERE products.name = '{(product_filter.SelectedItem as dynamic).Text}'";
+                             $"WHERE products.id = '{(product_filter.SelectedItem as dynamic).Value}' " +
+                             "AND products.deleted_at IS NULL;";
 
                 Console.WriteLine(sql);
 
@@ -154,7 +155,7 @@ namespace Almacén
                                  $"web_price = '{price}', " +
                                  $"brand_id = {(brand_filter.SelectedItem as dynamic).Value}, " +
                                  $"model_id = {(model_filter.SelectedItem as dynamic).Value} " +
-                                 $"WHERE name = '{product_filter.Text}'";
+                                 $"WHERE id = '{(product_filter.SelectedItem as dynamic).Value}'";
 
                     Console.WriteLine(sql);
 
@@ -192,7 +193,7 @@ namespace Almacén
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show($"Está seguro de eliminar el producto: {product_filter.Text}?", "Confirmación", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Está seguro de eliminar el producto: {(product_filter.SelectedItem as dynamic).Text}?", "Confirmación", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 // Se crea la conexión con la base de datos/servidor
                 string credentials = "server=127.0.0.1;user=rivas;password=test123;database=tarea;port=3306;";
@@ -203,7 +204,13 @@ namespace Almacén
                 else
                 {
                     // Consulta SQL para elimiar un producto
-                    string sql = $"DELETE FROM products WHERE name = '{product_filter.Text}';";
+                    //string sql = $"DELETE FROM products WHERE id = '{(product_filter.SelectedItem as dynamic).Value}';";
+
+                    // Consulta SQL para soft delete
+                    DateTime today = DateTime.Now;
+                    string FormattedDate = today.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+                    string sql = $"UPDATE products SET deleted_at = '{FormattedDate}' WHERE id = '{(product_filter.SelectedItem as dynamic).Value}';";
 
                     Console.WriteLine(sql);
 

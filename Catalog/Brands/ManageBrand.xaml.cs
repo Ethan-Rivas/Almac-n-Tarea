@@ -54,9 +54,12 @@ namespace Almacén
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             MySqlDataReader sqlReader = cmd.ExecuteReader();
 
+            comboBox.DisplayMemberPath = "Text";
+            comboBox.SelectedValuePath = "Value";
+
             while (sqlReader.Read())
             {
-                comboBox.Items.Add(sqlReader["name"].ToString());
+                comboBox.Items.Add(new { Text = sqlReader["name"].ToString(), Value = sqlReader["id"].ToString() });
             }
 
             sqlReader.Close();
@@ -72,7 +75,7 @@ namespace Almacén
             if (brand_filter.SelectedValue != null && brand_filter.SelectedValue.ToString().Length > 0)
             {
                 // Consulta SQL para buscar la marca seleccionada
-                string sql = $"SELECT * FROM brands WHERE name = '{brand_filter.SelectedValue}'";
+                string sql = $"SELECT * FROM brands WHERE id = '{(brand_filter.SelectedItem as dynamic).Value}'";
 
                 Console.WriteLine(sql);
 
@@ -116,7 +119,7 @@ namespace Almacén
             else
             {
                 // Consulta SQL para actualizar una marca
-                string sql = $"UPDATE brands SET name = '{name.Text}', description = '{description.Text}' WHERE name = '{brand_filter.SelectedValue}'";
+                string sql = $"UPDATE brands SET name = '{name.Text}', description = '{description.Text}' WHERE id = '{(brand_filter.SelectedItem as dynamic).Value}'";
 
                 Console.WriteLine(sql);
 
@@ -149,7 +152,7 @@ namespace Almacén
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show($"Está seguro de eliminar la marca: {brand_filter.SelectedValue}?", "Confirmación", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Está seguro de eliminar la marca: {(brand_filter.SelectedItem as dynamic).Text}?", "Confirmación", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 // Se crea la conexión con la base de datos/servidor
                 string credentials = "server=127.0.0.1;user=rivas;password=test123;database=tarea;port=3306;";
@@ -162,7 +165,13 @@ namespace Almacén
                 else
                 {
                     // Consulta SQL para elimiar una marca
-                    string sql = $"DELETE FROM brands WHERE name = '{brand_filter.SelectedValue}';";
+                    //string sql = $"DELETE FROM brands WHERE id = '{(brand_filter.SelectedItem as dynamic).Value}';";
+
+                    // Consulta SQL para soft delete
+                    DateTime today = DateTime.Now;
+                    string FormattedDate = today.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+                    string sql = $"UPDATE brands SET deleted_at = '{FormattedDate}' WHERE id = '{(brand_filter.SelectedItem as dynamic).Value}';";
 
                     Console.WriteLine(sql);
 

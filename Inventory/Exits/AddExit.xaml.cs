@@ -33,7 +33,7 @@ namespace Almacén
             string credentials = "server=127.0.0.1;user=rivas;password=test123;database=tarea;port=3306;";
             MySqlConnection connection = new MySqlConnection(credentials);
 
-            string products = "SELECT * FROM products";
+            string products = "SELECT * FROM products WHERE deleted_at IS NULL;";
 
             try
             {
@@ -133,7 +133,7 @@ namespace Almacén
             string product_id = (product.SelectedItem as dynamic).Value;
 
             // Consulta SQL para buscar el stock del producto seleccionado
-            string sql = $"SELECT stock FROM products WHERE id = {product_id}";
+            string sql = $"SELECT stock FROM products WHERE id = {product_id} AND deleted_at IS NULL;";
             string stock = "";
 
             Console.WriteLine(sql);

@@ -25,12 +25,19 @@ namespace Almacén
         {
             InitializeComponent();
 
+            // Redireccionar a Login al Inicializar MainWindow por primera vez
+            LogoutWindow();
+
+            page_frame.Content = new Products();
+        }
+
+        // Acción para deslogear un usuario.
+        private void LogoutWindow()
+        {
             Login.Login loginWindow = new Login.Login();
             loginWindow.Show();
 
             this.Hide();
-
-            page_frame.Content = new Products();
         }
 
         // Muestra la página de carga de productos
@@ -139,6 +146,11 @@ namespace Almacén
         {
             base.OnClosed(e);
             App.Current.Shutdown(0);
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            LogoutWindow();
         }
     }
 }

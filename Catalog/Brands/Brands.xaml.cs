@@ -41,7 +41,7 @@ namespace Almacén
                              "id AS ID, " +
                              "name AS Nombre, " +
                              "description AS Descripción " +
-                             "FROM brands " +
+                             "FROM brands WHERE deleted_at IS NULL " +
                              "ORDER BY id DESC";
 
                 // Inserta como un DataSet lo devuelto en la consulta SQL
